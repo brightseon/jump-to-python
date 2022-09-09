@@ -1,0 +1,27 @@
+from os import supports_bytes_environ
+
+
+class Calculator:
+    def __init__(self):
+        self.value = 0
+
+    def add(self, val):
+        self.value += val
+
+
+class MaxLimitCalculator(Calculator):
+    def __init__(self):
+        super().__init__()
+
+    def add(self, val):
+        self.value += val
+
+        if self.value > 100:
+            self.value = 100
+
+
+cal = MaxLimitCalculator()
+cal.add(50)
+cal.add(60)
+
+print(cal.value)
